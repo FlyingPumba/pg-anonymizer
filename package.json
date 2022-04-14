@@ -46,7 +46,7 @@
   "repository": "rap2hpoutre/pg-anonymizer",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "prepack": "npm i && rm -rf lib && tsc -b && oclif-dev readme",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md"
   },
