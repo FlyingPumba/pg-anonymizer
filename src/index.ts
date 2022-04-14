@@ -71,14 +71,14 @@ class PgAnonymizer extends Command {
       : null;
 
     console.error("Launching pg_dump");
-    const pg = spawn("pg_dump", [args.database]);
+    const pg = spawn("pg_dump", [args.database], {shell: "/usr/bin/bash"});
     pg.on("exit", function (code) {
       if (code != 0) {
         dieAndLog("pg_dump command failed with exit code", code);
       }
     });
     pg.stderr.on("data", function (data) {
-      dieAndLog("pg_dump command error:", data);
+      dieAndLog("pg_dump command error:", data.toString());
     });
     pg.stdout.setEncoding("utf8");
 
